@@ -39,7 +39,7 @@ create table Distance
 create table Route
 (
    Id                   integer not null,
-   Name                 varchar(0),
+   Name                 varchar(50),
    primary key (Id)
 );
 
@@ -61,7 +61,7 @@ create table RouteToStation
 create table Station
 (
    Id                   integer not null,
-   Name                 varchar(0),
+   Name                 varchar(50),
    Longitude            float,
    Lattitude            float,
    primary key (Id)
@@ -96,7 +96,7 @@ create table TransportStop
 /*==============================================================*/
 create table TransportType
 (
-   Name                 varchar(0),
+   Name                 varchar(30),
    Id                   integer not null,
    primary key (Id)
 );
@@ -107,7 +107,7 @@ create table TransportType
 create table TransportUnit
 (
    Id                   integer not null,
-   RegNumber            varchar(0),
+   RegNumber            varchar(10),
    RouteId              integer,
    TransportTypeId      integer not null,
    primary key (Id)
