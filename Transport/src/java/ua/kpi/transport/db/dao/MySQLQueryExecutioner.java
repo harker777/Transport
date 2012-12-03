@@ -3,6 +3,7 @@ package ua.kpi.transport.db.dao;
 import ua.kpi.transport.db.entities.BaseBean;
 import ua.kpi.transport.db.entities.StationBean;
 import java.lang.reflect.Method;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class MySQLQueryExecutioner{
 
-    public static ResultSet execute(String query, Object[] args) {
+    public static ResultSet execute(String query, Object ... args) {
         PreparedStatement ps = fillStatement(query, args);
         try {
             return ps.executeQuery();
@@ -27,7 +28,7 @@ public class MySQLQueryExecutioner{
         return null;
     }
     
-    public static void executeUpdate(String query, Object[] args){
+    public static void executeUpdate(String query, Object ... args){
         PreparedStatement ps = fillStatement(query, args);
         try {
             ps.executeUpdate();
@@ -44,6 +45,7 @@ public class MySQLQueryExecutioner{
                 if (name.equals("Integer")) ps.setInt(i+1, (Integer)args[i]);
                 if (name.equals("Float")) ps.setFloat(i+1, (Float)args[i]);
                 if (name.equals("String")) ps.setString(i+1, (String)args[i]);
+                if (name.equals("Date")) ps.setDate(i+1, (Date)args[i]);
             } catch (SQLException ex) {
                 Logger.getLogger(MySQLQueryExecutioner.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -58,6 +60,5 @@ public class MySQLQueryExecutioner{
             //TODO: Log
         }
         return null;
-    }
-    
+    }    
 }

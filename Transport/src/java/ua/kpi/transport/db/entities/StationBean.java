@@ -1,14 +1,11 @@
 package ua.kpi.transport.db.entities;
 
-import java.io.Serializable;
-
 /**
  *
  * @author harker777
  */
-public class StationBean extends BaseBean implements Serializable {
+public class StationBean extends BaseBean {
 
-    private static final long serialVersionUID = 1L;
     private Integer id;
     private String name;
     private Float longitude;
@@ -47,27 +44,6 @@ public class StationBean extends BaseBean implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (object == null) {
-            return false;
-        }
-
-        if (object == this){
-            return true;
-        }
-        
-        if (!(object instanceof StationBean)) {
-            return false;
-        }
-        
-        StationBean other = (StationBean) object;
-        return (this.getId().equals(other.getId()))
-                && (this.getName().equals(other.getName()))
-                && (this.getLattitude().equals(other.getLattitude()))
-                && (this.getLongitude().equals(other.getLongitude()));
-    }
-
-    @Override
     public int hashCode() {
         int hash = 5;
         hash = 47 * hash + (this.id != null ? this.id.hashCode() : 0);
@@ -75,14 +51,5 @@ public class StationBean extends BaseBean implements Serializable {
         hash = 47 * hash + (this.longitude != null ? this.longitude.hashCode() : 0);
         hash = 47 * hash + (this.lattitude != null ? this.lattitude.hashCode() : 0);
         return hash;
-    }
-
-    @Override
-    public String toString() {
-        return "\nEntity - Station:\n"
-                + "Id - " + getId() + "\n"
-                + "Name - " + getName() + "\n"
-                + "Longitude - " + getLongitude() + "\n"
-                + "Lattitude - " + getLattitude() + "\n";
     }
 }

@@ -1,12 +1,11 @@
 package ua.kpi.transport.db.dao;
 
-import ua.kpi.transport.db.entities.StationBean;
-import ua.kpi.transport.db.entities.TransportTypeBean;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import ua.kpi.transport.db.entities.StationBean;
+import ua.kpi.transport.db.entities.TransportTypeBean;
 
 /**
  *
@@ -18,7 +17,7 @@ public class MySQLStationDAO implements StationDAO {
     public StationBean find(Integer id) {
         String query = "SELECT * FROM station WHERE id = ?";
         ResultSet rs = MySQLQueryExecutioner.execute(
-                query, new Object[]{id});
+                query, id);
 
         return fromResultSet(rs).get(0);
     }
@@ -27,7 +26,7 @@ public class MySQLStationDAO implements StationDAO {
     public List<StationBean> findAll() {
         String query = "SELECT * FROM station ORDER BY Id ASC";
         ResultSet rs = MySQLQueryExecutioner.execute(
-                query, new Object[]{});
+                query);
 
         return fromResultSet(rs);
     }
@@ -36,7 +35,7 @@ public class MySQLStationDAO implements StationDAO {
     public StationBean findByName(String name) {
         String query = "SELECT * FROM station WHERE Name = ? LIMIT 1";
         ResultSet rs = MySQLQueryExecutioner.execute(
-                query, new Object[]{name});
+                query, name);
 
         return fromResultSet(rs).get(0);
     }
@@ -45,7 +44,7 @@ public class MySQLStationDAO implements StationDAO {
     public StationBean create() {
         String query = "INSERT INTO station (Name,Lattitude,Longitude) VALUES (?,?,?)";
         MySQLQueryExecutioner.executeUpdate(
-                query, new Object[]{"Name", 0.0F, 0.0F});
+                query, "Name", 0.0F, 0.0F);
 
         query = "SELECT * FROM station ORDER BY Id DESC LIMIT 1";
         ResultSet rs = MySQLQueryExecutioner.execute(
@@ -57,19 +56,18 @@ public class MySQLStationDAO implements StationDAO {
     public void delete(StationBean bean) {
         String query = "DELETE FROM station WHERE id = ?";
         MySQLQueryExecutioner.executeUpdate(
-                query, new Object[]{bean.getId()});
+                query, bean.getId());
     }
 
     @Override
     public void update(StationBean bean) {
         String query = "UPDATE station SET Name = ?, Lattitude = ?, Longitude = ? WHERE Id = ?";
-        Object[] data = {
-            bean.getName(),
-            bean.getLattitude(),
-            bean.getLongitude(),
-            bean.getId()};
         MySQLQueryExecutioner.executeUpdate(
-                query, data);
+                query, 
+                bean.getName(),
+                bean.getLattitude(),
+                bean.getLongitude(),
+                bean.getId());
     }
 
     @Override
@@ -77,15 +75,6 @@ public class MySQLStationDAO implements StationDAO {
         for (StationBean bean : beans) {
             delete(bean);
         }
-    }
-
-    private PreparedStatement prepareStatement(String query) {
-        try {
-            return MySQLDAOFactory.getConnection().prepareStatement(query);
-        } catch (SQLException ex) {
-            //TODO: Log
-        }
-        return null;
     }
 
     @Override
@@ -111,7 +100,7 @@ public class MySQLStationDAO implements StationDAO {
                 + "(stationtotype.TransportTypeId = transporttype.Id)";
 
         ResultSet rs = MySQLQueryExecutioner.execute(
-                query, new Object[]{type.getId()});
+                query, type.getId());
         return fromResultSet(rs);
     }
     
@@ -132,5 +121,4 @@ public class MySQLStationDAO implements StationDAO {
         }
         return res;
     }
-
 }

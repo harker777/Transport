@@ -26,9 +26,9 @@ drop table if exists TransportUnit;
 /*==============================================================*/
 create table Distance
 (
-   Id                   integer not null,
-   Station1             integer,
-   Station2             integer,
+   Id                   integer not null auto_increment,
+   StationFromId        integer,
+   StationToId          integer,
    Distance             integer,
    primary key (Id)
 );
@@ -38,7 +38,7 @@ create table Distance
 /*==============================================================*/
 create table Route
 (
-   Id                   integer not null,
+   Id                   integer not null auto_increment,
    Name                 varchar(50),
    primary key (Id)
 );
@@ -48,7 +48,7 @@ create table Route
 /*==============================================================*/
 create table RouteToStation
 (
-   Id                   integer not null,
+   Id                   integer not null auto_increment,
    RouteId              integer,
    StationId            integer,
    StationNum           integer,
@@ -60,7 +60,7 @@ create table RouteToStation
 /*==============================================================*/
 create table Station
 (
-   Id                   integer not null,
+   Id                   integer not null auto_increment,
    Name                 varchar(50),
    Longitude            float,
    Lattitude            float,
@@ -72,7 +72,7 @@ create table Station
 /*==============================================================*/
 create table StationToType
 (
-   Id                   integer not null,
+   Id                   integer not null auto_increment,
    StationId            integer,
    TransportTypeId      integer,
    primary key (Id)
@@ -83,7 +83,7 @@ create table StationToType
 /*==============================================================*/
 create table TransportStop
 (
-   Id                   integer not null,
+   Id                   integer not null auto_increment,
    RouteToStationId     integer,
    TransportUnitId      integer,
    Number               integer,
@@ -96,8 +96,8 @@ create table TransportStop
 /*==============================================================*/
 create table TransportType
 (
+   Id                   integer not null auto_increment,
    Name                 varchar(30),
-   Id                   integer not null,
    primary key (Id)
 );
 
@@ -106,17 +106,17 @@ create table TransportType
 /*==============================================================*/
 create table TransportUnit
 (
-   Id                   integer not null,
+   Id                   integer not null auto_increment,
    RegNumber            varchar(10),
    RouteId              integer,
    TransportTypeId      integer not null,
    primary key (Id)
 );
 
-alter table Distance add constraint FK_Reference_10 foreign key (Station2)
+alter table Distance add constraint FK_Reference_10 foreign key (StationToId)
       references Station (Id) on delete restrict on update restrict;
 
-alter table Distance add constraint FK_Reference_9 foreign key (Station1)
+alter table Distance add constraint FK_Reference_9 foreign key (StationFromId)
       references Station (Id) on delete restrict on update restrict;
 
 alter table RouteToStation add constraint FK_Reference_4 foreign key (RouteId)

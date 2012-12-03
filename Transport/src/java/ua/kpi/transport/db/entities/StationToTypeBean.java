@@ -33,38 +33,14 @@ public class StationToTypeBean extends BaseBean{
     public void setStationId(Integer stationId) {
         this.stationId = stationId;
     }
-
     
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (getId() != null ? getId().hashCode() : 0);
+        int hash = 5;
+        hash = 11 * hash + (this.id != null ? this.id.hashCode() : 0);
+        hash = 11 * hash + (this.transportTypeId != null ? this.transportTypeId.hashCode() : 0);
+        hash = 11 * hash + (this.stationId != null ? this.stationId.hashCode() : 0);
         return hash;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        if (object == null) {
-            return false;
-        }
-        if (this == object) {
-            return true;
-        }
-        if (!(object instanceof StationToTypeBean)) {
-            return false;
-        }
-
-        StationToTypeBean other = (StationToTypeBean) object;
-        return (this.getId().equals(other.getId())&&
-                this.getStationId().equals(other.getStationId())&&
-                this.getTransportTypeId().equals(other.getTransportTypeId()));
-    }
-
-    @Override
-    public String toString() {
-        return "Entity - StationType:\n"
-                + "Id - " + getId() + "\n"
-                + "StationId - " + getStationId() + "\n"
-                + "TransportTypeId - " + getTransportTypeId() + "\n";
-    }
 }
