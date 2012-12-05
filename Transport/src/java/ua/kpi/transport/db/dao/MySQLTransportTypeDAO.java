@@ -4,6 +4,7 @@
  */
 package ua.kpi.transport.db.dao;
 
+import ua.kpi.transport.db.dao.utils.MySQLQueryExecutioner;
 import ua.kpi.transport.db.entities.BaseBean;
 import ua.kpi.transport.db.entities.TransportTypeBean;
 import java.sql.ResultSet;
@@ -54,7 +55,7 @@ public class MySQLTransportTypeDAO implements TransportTypeDAO {
     }
 
     @Override
-    public void delete(TransportTypeBean... beans) {
+    public void delete(List<TransportTypeBean> beans) {
         for (TransportTypeBean bean : beans) {
             delete(bean);
         }
@@ -65,14 +66,13 @@ public class MySQLTransportTypeDAO implements TransportTypeDAO {
         String query = ""
                 + "UPDATE TABLE transporttype "
                 + "SET Name = ? "
-                + "WHERE "
-                + "(Id = ?)";
+                + "WHERE (Id = ?)";
         MySQLQueryExecutioner.executeUpdate(
                 query, new Object[] {bean.getName(),bean.getId()});
     }
 
     @Override
-    public void update(TransportTypeBean... beans) {
+    public void update(List<TransportTypeBean> beans) {
         for (TransportTypeBean bean : beans){
             update(bean);
         }

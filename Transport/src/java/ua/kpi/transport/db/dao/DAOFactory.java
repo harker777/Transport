@@ -21,4 +21,8 @@ public abstract class DAOFactory {
     public abstract StationDAO getStationDAO();
     
     public abstract TransportTypeDAO getTransportTypeDAO();
+    
+    public abstract StationToTypeDAO getStationToTypeDAO();
+    
+    public abstract DistanceDAO getDistanceDAO();
 }

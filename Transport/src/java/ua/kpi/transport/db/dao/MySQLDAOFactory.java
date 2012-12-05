@@ -58,4 +58,14 @@ public class MySQLDAOFactory extends DAOFactory{
     public TransportTypeDAO getTransportTypeDAO(){
         return new MySQLTransportTypeDAO();
     }
+
+    @Override
+    public StationToTypeDAO getStationToTypeDAO() {
+        return new MySQLStationToTypeDAO();
+    }
+    
+    @Override
+    public DistanceDAO getDistanceDAO(){
+        return new MySQLDistanceDAO();
+    }
 }

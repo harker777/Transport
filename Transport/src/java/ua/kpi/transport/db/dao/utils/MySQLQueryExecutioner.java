@@ -1,4 +1,4 @@
-package ua.kpi.transport.db.dao;
+package ua.kpi.transport.db.dao.utils;
 
 import ua.kpi.transport.db.entities.BaseBean;
 import ua.kpi.transport.db.entities.StationBean;
@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import ua.kpi.transport.db.dao.MySQLDAOFactory;
 
 /**
  *

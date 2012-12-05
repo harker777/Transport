@@ -1,5 +1,6 @@
 package ua.kpi.transport.db.dao;
 
+import ua.kpi.transport.db.dao.utils.MySQLQueryExecutioner;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class MySQLStationToTypeDAO implements StationToTypeDAO {
     }
 
     @Override
-    public void delete(StationToTypeBean... beans) {
+    public void delete(List<StationToTypeBean> beans) {
         for (StationToTypeBean bean : beans) {
             delete(bean);
         }
@@ -72,7 +73,7 @@ public class MySQLStationToTypeDAO implements StationToTypeDAO {
     }
 
     @Override
-    public void update(StationToTypeBean... beans) {
+    public void update(List<StationToTypeBean> beans) {
         for (StationToTypeBean bean : beans){
             update(bean);
         }

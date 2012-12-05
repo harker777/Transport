@@ -18,11 +18,11 @@ public interface EntityDAO<T extends BaseBean> {
     
     public void delete(T bean);
     
-    public void delete(T ... beans);
+    public void delete(List<T> beans);
 
     public void update(T bean);
     
-    public void update(T ... beans);
+    public void update(List<T> beans);
 
     public List<T> fromResultSet(ResultSet rs);
 }
