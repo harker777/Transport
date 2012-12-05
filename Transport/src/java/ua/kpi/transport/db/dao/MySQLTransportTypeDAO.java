@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author harker777
  */
-public class MySQLTransportTypeDAO implements TransportTypeDAO {
+public class MySQLTransportTypeDAO implements ITransportTypeDAO {
 
     @Override
     public TransportTypeBean find(Integer id) {

@@ -1,5 +1,6 @@
 package testing;
 
+import ua.kpi.transport.db.dao.factory.DAOFactory;
 import java.sql.SQLException;
 import ua.kpi.transport.db.dao.*;
 import ua.kpi.transport.db.entities.*;
@@ -12,23 +13,25 @@ import ua.kpi.transport.util.settings.Pages;
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-//        System.out.println(Pages.getPage("HOME_PAGE"));
+//        testDistanceDAO();
     }
     
     public static void testDistanceDAO(){
-        DistanceDAO sd = DAOFactory.getDAOFactory("MYSQl").getDistanceDAO();
-        sd.create();
-        sd.create();
-        DistanceBean db = sd.find(1);
+        IDistanceDAO dd = DAOFactory.getDAOFactory("MYSQl").getDistanceDAO();
+        IStationDAO sd = DAOFactory.getDAOFactory("MYSQL").getStationDAO();
+        dd.delete(dd.findAll());
+        dd.create();
+        dd.create();
+        dd.create();
+        dd.create();
+        DistanceBean db = dd.find(dd.findAll().get(2).getId());
         db.setDistance(3);
-        db.setStationFromId(61);
-        db.setStationToId(62);
-        sd.update(db);
-        sd.delete(sd.find(2));
-        for (DistanceBean bean : sd.findAll()){
+        db.setStationFromId(sd.findAll().get(0).getId());
+        db.setStationToId(sd.findAll().get(1).getId());
+        dd.update(db);
+        dd.delete(dd.find(dd.findAll().get(1).getId()));
+        for (DistanceBean bean : dd.findAll()){
             System.out.println(bean);
         }
-        
-        
     }
 }

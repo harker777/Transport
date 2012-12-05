@@ -13,7 +13,7 @@ import ua.kpi.transport.db.entities.StationToTypeBean;
  *
  * @author harker777
  */
-public class MySQLStationToTypeDAO implements StationToTypeDAO {
+public class MySQLStationToTypeDAO implements IStationToTypeDAO {
 
     @Override
     public StationToTypeBean find(Integer id) {

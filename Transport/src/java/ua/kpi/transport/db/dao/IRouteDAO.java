@@ -4,12 +4,12 @@
  */
 package ua.kpi.transport.db.dao;
 
-import ua.kpi.transport.db.entities.TransportTypeBean;
+import ua.kpi.transport.db.entities.RouteBean;
 
 /**
  *
  * @author harker777
  */
-public interface TransportTypeDAO extends EntityDAO<TransportTypeBean>{
+public interface IRouteDAO extends IEntityDAO<RouteBean>{
     
 }

@@ -10,6 +10,6 @@ import ua.kpi.transport.db.entities.DistanceBean;
  *
  * @author harker777
  */
-public interface DistanceDAO extends EntityDAO<DistanceBean>{
+public interface IDistanceDAO extends IEntityDAO<DistanceBean>{
     
 }

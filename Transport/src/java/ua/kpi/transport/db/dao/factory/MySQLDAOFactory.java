@@ -1,8 +1,17 @@
-package ua.kpi.transport.db.dao;
+package ua.kpi.transport.db.dao.factory;
 
+import ua.kpi.transport.db.dao.factory.DAOFactory;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import ua.kpi.transport.db.dao.IDistanceDAO;
+import ua.kpi.transport.db.dao.MySQLDistanceDAO;
+import ua.kpi.transport.db.dao.MySQLStationDAO;
+import ua.kpi.transport.db.dao.MySQLStationToTypeDAO;
+import ua.kpi.transport.db.dao.MySQLTransportTypeDAO;
+import ua.kpi.transport.db.dao.IStationDAO;
+import ua.kpi.transport.db.dao.IStationToTypeDAO;
+import ua.kpi.transport.db.dao.ITransportTypeDAO;
 
 /**
  *
@@ -50,22 +59,22 @@ public class MySQLDAOFactory extends DAOFactory{
     }
     
     @Override
-    public StationDAO getStationDAO(){
+    public IStationDAO getStationDAO(){
         return new MySQLStationDAO();
     }
     
     @Override
-    public TransportTypeDAO getTransportTypeDAO(){
+    public ITransportTypeDAO getTransportTypeDAO(){
         return new MySQLTransportTypeDAO();
     }
 
     @Override
-    public StationToTypeDAO getStationToTypeDAO() {
+    public IStationToTypeDAO getStationToTypeDAO() {
         return new MySQLStationToTypeDAO();
     }
     
     @Override
-    public DistanceDAO getDistanceDAO(){
+    public IDistanceDAO getDistanceDAO(){
         return new MySQLDistanceDAO();
     }
 }

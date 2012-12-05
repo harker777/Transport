@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import ua.kpi.transport.db.dao.MySQLDAOFactory;
+import ua.kpi.transport.db.dao.factory.MySQLDAOFactory;
 
 /**
  *

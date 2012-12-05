@@ -1,6 +1,8 @@
-package ua.kpi.transport.db.dao;
+package ua.kpi.transport.db.dao.utils;
 
+import ua.kpi.transport.db.dao.factory.DAOFactory;
 import java.util.Random;
+import ua.kpi.transport.db.dao.IStationDAO;
 import ua.kpi.transport.db.entities.StationBean;
 
 /**
@@ -16,7 +18,7 @@ public class DBBootstrapper {
     }
 
     public static void bootstrapStation() {
-        StationDAO sd = DAOFactory.getDAOFactory("MYSQL").getStationDAO();
+        IStationDAO sd = DAOFactory.getDAOFactory("MYSQL").getStationDAO();
         for (int i = 0; i < 10; i++) {
             StationBean bean = sd.create();
             bean.setName("Station " + (i + 1));

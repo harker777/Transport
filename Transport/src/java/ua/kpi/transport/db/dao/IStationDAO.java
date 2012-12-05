@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author harker777
  */
-public interface StationDAO extends EntityDAO<StationBean>{
+public interface IStationDAO extends IEntityDAO<StationBean>{
     
     public StationBean findByName(String name);
     

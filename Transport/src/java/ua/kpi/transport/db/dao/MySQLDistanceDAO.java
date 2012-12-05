@@ -17,7 +17,7 @@ import ua.kpi.transport.db.entities.DistanceBean;
  *
  * @author harker777
  */
-public class MySQLDistanceDAO implements DistanceDAO{
+public class MySQLDistanceDAO implements IDistanceDAO{
 
     @Override
     public DistanceBean find(Integer id) {

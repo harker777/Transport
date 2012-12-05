@@ -12,7 +12,7 @@ import ua.kpi.transport.db.entities.TransportTypeBean;
  *
  * @author harker777
  */
-public class MySQLStationDAO implements StationDAO {
+public class MySQLStationDAO implements IStationDAO {
 
     @Override
     public StationBean find(Integer id) {

@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author harker777
  */
-public interface EntityDAO<T extends BaseBean> {
+public interface IEntityDAO<T extends BaseBean> {
     
     public T find(Integer id);
 

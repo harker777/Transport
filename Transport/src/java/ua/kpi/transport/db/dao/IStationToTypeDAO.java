@@ -6,6 +6,6 @@ import ua.kpi.transport.db.entities.StationToTypeBean;
  *
  * @author harker777
  */
-public interface StationToTypeDAO extends EntityDAO<StationToTypeBean> {
+public interface IStationToTypeDAO extends IEntityDAO<StationToTypeBean> {
     
 }
