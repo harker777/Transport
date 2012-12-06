@@ -1,9 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ua.kpi.transport.db.dao;
 
+import ua.kpi.transport.db.dao.interfaces.IRouteDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -35,8 +32,8 @@ public class MySQLRouteDAO implements IRouteDAO {
 
     @Override
     public RouteBean create() {
-        String query = "INSERT INTO route VALUES (NULL, NULL)";
-        MySQLQueryExecutioner.executeUpdate(query);
+        String query = "INSERT INTO route VALUES (NULL, ?)";
+        MySQLQueryExecutioner.executeUpdate(query, "Name");
 
         query = "SELECT * FROM route ORDER BY Id DESC LIMIT 1";
         ResultSet rs = MySQLQueryExecutioner.execute(query);

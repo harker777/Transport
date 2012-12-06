@@ -1,4 +1,4 @@
-package ua.kpi.transport.db.dao;
+package ua.kpi.transport.db.dao.interfaces;
 
 import ua.kpi.transport.db.entities.StationBean;
 import ua.kpi.transport.db.entities.TransportTypeBean;

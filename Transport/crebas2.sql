@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     06.12.2012 21:53:46                          */
+/* Created on:     06.12.2012 22:15:25                          */
 /*==============================================================*/
 
 set foreign_key_checks = 0;
@@ -87,10 +87,10 @@ create table TransportStop
 (
    Id                   integer not null auto_increment,
    TransportUnitId      integer,
-   StationId            integer,
+   StationId            integer not null,
    Number               integer,
    RaceNumber           integer,
-   Time                 datetime,
+   StopTime             datetime,
    primary key (Id)
 );
 

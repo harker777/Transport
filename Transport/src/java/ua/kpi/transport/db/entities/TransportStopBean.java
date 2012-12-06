@@ -10,9 +10,10 @@ public class TransportStopBean extends BaseBean {
 
     private Integer id;
     private Integer number;
+    private Integer raceNumber;
     private Date stopTime;
     private Integer transportUnitId;
-    private Integer routeToStationId;
+    private Integer stationId;
 
     public TransportStopBean(Integer id) {
         this.id = id;
@@ -25,7 +26,7 @@ public class TransportStopBean extends BaseBean {
         hash = 79 * hash + (this.number != null ? this.number.hashCode() : 0);
         hash = 79 * hash + (this.stopTime != null ? this.stopTime.hashCode() : 0);
         hash = 79 * hash + (this.transportUnitId != null ? this.transportUnitId.hashCode() : 0);
-        hash = 79 * hash + (this.routeToStationId != null ? this.routeToStationId.hashCode() : 0);
+        hash = 79 * hash + (this.stationId != null ? this.stationId.hashCode() : 0);
         return hash;
     }
 
@@ -57,12 +58,19 @@ public class TransportStopBean extends BaseBean {
         this.transportUnitId = transportUnitId;
     }
 
-    public Integer getRouteToStationId() {
-        return routeToStationId;
+    public Integer getStationId() {
+        return stationId;
     }
 
-    public void setRouteToStationId(Integer routeToStationId) {
-        this.routeToStationId = routeToStationId;
+    public void setStationId(Integer stationId) {
+        this.stationId = stationId;
     }
-    
+
+    public Integer getRaceNumber() {
+        return raceNumber;
+    }
+
+    public void setRaceNumber(Integer raceNumber) {
+        this.raceNumber = raceNumber;
+    }
 }

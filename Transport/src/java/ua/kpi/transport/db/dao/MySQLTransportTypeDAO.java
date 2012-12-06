@@ -4,6 +4,7 @@
  */
 package ua.kpi.transport.db.dao;
 
+import ua.kpi.transport.db.dao.interfaces.ITransportTypeDAO;
 import ua.kpi.transport.db.dao.utils.MySQLQueryExecutioner;
 import ua.kpi.transport.db.entities.BaseBean;
 import ua.kpi.transport.db.entities.TransportTypeBean;

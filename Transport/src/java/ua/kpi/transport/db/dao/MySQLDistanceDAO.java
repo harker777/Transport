@@ -4,6 +4,7 @@
  */
 package ua.kpi.transport.db.dao;
 
+import ua.kpi.transport.db.dao.interfaces.IDistanceDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

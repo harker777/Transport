@@ -1,5 +1,6 @@
 package ua.kpi.transport.db.dao;
 
+import ua.kpi.transport.db.dao.interfaces.IStationDAO;
 import ua.kpi.transport.db.dao.utils.MySQLQueryExecutioner;
 import java.sql.ResultSet;
 import java.sql.SQLException;

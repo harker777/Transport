@@ -1,9 +1,13 @@
 package ua.kpi.transport.db.dao.factory;
 
-import ua.kpi.transport.db.dao.IDistanceDAO;
-import ua.kpi.transport.db.dao.IStationDAO;
-import ua.kpi.transport.db.dao.IStationToTypeDAO;
-import ua.kpi.transport.db.dao.ITransportTypeDAO;
+import ua.kpi.transport.db.dao.interfaces.IDistanceDAO;
+import ua.kpi.transport.db.dao.interfaces.IRouteDAO;
+import ua.kpi.transport.db.dao.interfaces.IRouteToStationDAO;
+import ua.kpi.transport.db.dao.interfaces.IStationDAO;
+import ua.kpi.transport.db.dao.interfaces.IStationToTypeDAO;
+import ua.kpi.transport.db.dao.interfaces.ITransportStopDAO;
+import ua.kpi.transport.db.dao.interfaces.ITransportTypeDAO;
+import ua.kpi.transport.db.dao.interfaces.ITransportUnitDAO;
 
 /**
  *
@@ -30,4 +34,12 @@ public abstract class DAOFactory {
     public abstract IStationToTypeDAO getStationToTypeDAO();
     
     public abstract IDistanceDAO getDistanceDAO();
+    
+    public abstract IRouteDAO getRouteDAO();
+    
+    public abstract ITransportUnitDAO getTransportUnitDAO();
+    
+    public abstract IRouteToStationDAO getRouteToStationDAO();
+    
+    public abstract ITransportStopDAO getTransportStopDAO();
 }
