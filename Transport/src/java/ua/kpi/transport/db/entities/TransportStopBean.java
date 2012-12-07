@@ -1,5 +1,6 @@
 package ua.kpi.transport.db.entities;
 
+import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -72,5 +73,71 @@ public class TransportStopBean extends BaseBean {
 
     public void setRaceNumber(Integer raceNumber) {
         this.raceNumber = raceNumber;
+    }
+
+    public static Comparator getIdComparator() {
+        return new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                TransportStopBean b1 = (TransportStopBean) o1;
+                TransportStopBean b2 = (TransportStopBean) o2;
+                return b1.getId().compareTo(b2.getId());
+            }
+        };
+    }
+
+    public static Comparator getNumberComparator() {
+        return new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                TransportStopBean b1 = (TransportStopBean) o1;
+                TransportStopBean b2 = (TransportStopBean) o2;
+                return b1.getNumber().compareTo(b2.getNumber());
+            }
+        };
+    }
+
+    public static Comparator getRaceNumberComparator() {
+        return new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                TransportStopBean b1 = (TransportStopBean) o1;
+                TransportStopBean b2 = (TransportStopBean) o2;
+                return b1.getRaceNumber().compareTo(b2.getRaceNumber());
+            }
+        };
+    }
+
+    public static Comparator getStopTimeComparator() {
+        return new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                TransportStopBean b1 = (TransportStopBean) o1;
+                TransportStopBean b2 = (TransportStopBean) o2;
+                return b1.getStopTime().compareTo(b2.getStopTime());
+            }
+        };
+    }
+
+    public static Comparator getTransportUnitIdComparator() {
+        return new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                TransportStopBean b1 = (TransportStopBean) o1;
+                TransportStopBean b2 = (TransportStopBean) o2;
+                return b1.getTransportUnitId().compareTo(b2.getTransportUnitId());
+            }
+        };
+    }
+
+    public static Comparator getStationIdComparator() {
+        return new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                TransportStopBean b1 = (TransportStopBean) o1;
+                TransportStopBean b2 = (TransportStopBean) o2;
+                return b1.getStationId().compareTo(b2.getStationId());
+            }
+        };
     }
 }

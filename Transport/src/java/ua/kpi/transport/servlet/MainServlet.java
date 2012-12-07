@@ -2,12 +2,15 @@ package ua.kpi.transport.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import ua.kpi.transport.db.dao.factory.DAOFactory;
+import ua.kpi.transport.db.entities.StationBean;
 
 /**
  *
@@ -17,8 +20,10 @@ public class MainServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("list", DAOFactory.getDAOFactory("MYSQl").getStationDAO().findAll());
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+        List<StationBean> stations = DAOFactory.getDAOFactory("MYSQl").getStationDAO().findAll();
+        Collections.sort(stations, StationBean.getLattitudeComparator());
+        request.setAttribute("list", stations);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/stations.jsp");
         dispatcher.forward(request, response);
     }
 

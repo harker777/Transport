@@ -1,10 +1,12 @@
 package ua.kpi.transport.db.entities;
 
+import java.util.Comparator;
+
 /**
  *
  * @author harker777
  */
-public class TransportUnitBean extends BaseBean{
+public class TransportUnitBean extends BaseBean {
 
     private Integer id;
     private String regNumber;
@@ -14,7 +16,7 @@ public class TransportUnitBean extends BaseBean{
     public TransportUnitBean(Integer id) {
         this.id = id;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -53,4 +55,47 @@ public class TransportUnitBean extends BaseBean{
         this.routeId = routeId;
     }
 
+    public static Comparator getIdComparator() {
+        return new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                TransportUnitBean b1 = (TransportUnitBean) o1;
+                TransportUnitBean b2 = (TransportUnitBean) o2;
+                return b1.getId().compareTo(b2.getId());
+            }
+        };
+    }
+
+    public static Comparator getRegNumberComparator() {
+        return new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                TransportUnitBean b1 = (TransportUnitBean) o1;
+                TransportUnitBean b2 = (TransportUnitBean) o2;
+                return b1.getRegNumber().compareTo(b2.getRegNumber());
+            }
+        };
+    }
+
+    public static Comparator getTransportTypeIdComparator() {
+        return new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                TransportUnitBean b1 = (TransportUnitBean) o1;
+                TransportUnitBean b2 = (TransportUnitBean) o2;
+                return b1.getTransportTypeId().compareTo(b2.getTransportTypeId());
+            }
+        };
+    }
+
+    public static Comparator getRouteIdComparator() {
+        return new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                TransportUnitBean b1 = (TransportUnitBean) o1;
+                TransportUnitBean b2 = (TransportUnitBean) o2;
+                return b1.getRouteId().compareTo(b2.getRouteId());
+            }
+        };
+    }
 }

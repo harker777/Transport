@@ -48,7 +48,9 @@ public class BaseBean implements Serializable {
                     Method method = this.getClass().getMethod("get" + name, null);
                     Object ob1 = method.invoke(this, (Object[]) null);
                     Object ob2 = method.invoke(other, (Object[]) null);
-                    if (!ob1.equals(ob2)) return false;
+                    if (!ob1.equals(ob2)) {
+                        return false;
+                    }
                 } catch (IllegalAccessException ex) {
                     Logger.getLogger(BaseBean.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IllegalArgumentException ex) {
@@ -95,6 +97,34 @@ public class BaseBean implements Serializable {
             Logger.getLogger(BaseBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         result += "\n";
+        return result;
+    }
+
+    //Just some utility, used to generate Comparator getters
+    public String getComparators() {
+        String result = "\n";
+        String className = this.getClass().getSimpleName();
+
+        for (Field field : this.getClass().getDeclaredFields()) {
+            String name = field.getName();
+            if (!name.equals("serialVersionUID")) {
+                name = name.substring(0, 1).toUpperCase() + name.substring(1);
+                result += "public static Comparator get";
+                result += name;
+                result += "Comparator(){\n";
+                
+                result += "return new Comparator(){\n"
+                        + "@Override\n"
+                        + "public int compare(Object o1, Object o2) {\n"
+                        + " " + className + " b1 = (" + className + ")o1;\n"
+                        + " " + className + " b2 = (" + className + ")o2;\n"
+                        + " " + "return b1.get" + name + "().compareTo(b2.get" + name + "());\n"
+                        + " " + "}\n"
+                        + "};\n";
+                
+                result += "}\n\n";
+            }
+        }
         return result;
     }
 }

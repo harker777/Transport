@@ -16,7 +16,9 @@ import ua.kpi.transport.util.settings.Pages;
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-        DBBootstrapper.bootstrap();
+//        DBBootstrapper.bootstrap();
 //        testDistanceDAO();
+        TransportUnitBean sb = new TransportUnitBean(1);
+        System.out.println(sb.getComparators());
     }
 }
